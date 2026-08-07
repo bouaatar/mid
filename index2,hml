@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============================================================
+     SEO — Balises Meta principales
+============================================================ -->
+<title>MID.MA — Modern Innovation Digital | Formations RAD, Low-Code, IoT & Robotics à Rabat</title>
+<meta name="description" content="MID.MA forme la nouvelle génération d'ingénieurs marocains aux technologies qui comptent : Développement Rapide (RAD), Low-Code/No-Code, IoT et Robotics. Une pédagogie 100% pratique, ancrée sur le terrain, à Rabat.">
+<meta name="keywords" content="MID.MA, formation IoT Maroc, Low-Code No-Code Rabat, Robotics Arduino Micro:bit, RAD développement rapide, formation technologique Rabat, ESP32 Raspberry Pi formation">
+<meta name="author" content="MID.MA — Modern Innovation Digital">
+<link rel="canonical" href="https://www.mid.ma/">
+
+<!-- Open Graph (Facebook / LinkedIn) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MID.MA">
+<meta property="og:title" content="MID.MA — Modern Innovation Digital | L'apprentissage par la pratique">
+<meta property="og:description" content="Découvrez les formations RAD, Low-Code/No-Code, IoT et Robotics de MID.MA : une approche 100% pratique pour maîtriser les technologies de demain, à Rabat.">
+<meta property="og:url" content="https://www.mid.ma/">
+<meta property="og:image" content="https://www.mid.ma/assets/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_MA">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MID.MA — Modern Innovation Digital">
+<meta name="twitter:description" content="RAD, Low-Code/No-Code, IoT, Robotics : quatre filières, une seule méthode — apprendre en faisant.">
+<meta name="twitter:image" content="https://www.mid.ma/assets/og-cover.jpg">
+
+<!-- Données structurées Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "MID.MA — Modern Innovation Digital",
+  "url": "https://www.mid.ma/",
+  "logo": "https://raw.githubusercontent.com/bouaatar/mid/refs/heads/main/small.jpg",
+  "description": "Centre de formation technologique proposant des cursus pratiques en Développement Rapide (RAD), Low-Code/No-Code, Internet des Objets (IoT) et Robotics.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Rabat",
+    "addressCountry": "MA"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/mid-ma",
+    "https://www.instagram.com/mid.ma"
+  ],
+  "hasCourse": [
+    {
+      "@type": "Course",
+      "name": "RAD — Rapid Application Development",
+      "description": "Ingénierie des systèmes rapides, optimisation des bases de données et génération de rapports professionnels.",
+      "provider": { "@type": "EducationalOrganization", "name": "MID.MA" }
+    },
+    {
+      "@type": "Course",
+      "name": "Low-Code / No-Code",
+      "description": "Constructeurs visuels, développement de MVPs, automatisation et intégration cloud.",
+      "provider": { "@type": "EducationalOrganization", "name": "MID.MA" }
+    },
+    {
+      "@type": "Course",
+      "name": "IoT — Internet des Objets",
+      "description": "Programmation de microcontrôleurs (ESP32, Raspberry Pi), gestion de capteurs et interaction cloud.",
+      "provider": { "@type": "EducationalOrganization", "name": "MID.MA" }
+    },
+    {
+      "@type": "Course",
+      "name": "Robotics",
+      "description": "Électronique pratique, automatisation et programmation de systèmes physiques avec Arduino et Micro:bit.",
+      "provider": { "@type": "EducationalOrganization", "name": "MID.MA" }
+    }
+  ]
+}
+</script>
+
+<!-- Polices -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS (CDN) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'midnight': '#0B3984',
+          'midnight-deep': '#071F4D',
+          'midnight-card': '#123B85',
+          'neon': '#00F076',
+          'ink': '#0A1730'
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          body: ['"Inter"', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace']
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #0B3984; }
+
+  /* ---- Trace de circuit (signature visuelle) ---- */
+  .circuit-line {
+    stroke-dasharray: 8 6;
+    stroke-dashoffset: 0;
+    animation: signal-travel 3.2s linear infinite;
+  }
+  @keyframes signal-travel {
+    to { stroke-dashoffset: -140; }
+  }
+
+  /* ---- Halo néon subtil sur les cartes actives ---- */
+  .formation-card {
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  }
+  .formation-card:hover {
+    transform: translateY(-6px);
+    border-color: #00F076;
+    box-shadow: 0 0 0 1px rgba(0,240,118,0.25), 0 20px 40px -20px rgba(0,240,118,0.35);
+  }
+  .formation-card:hover .card-node {
+    background-color: #00F076;
+    box-shadow: 0 0 0 6px rgba(0,240,118,0.18);
+  }
+
+  /* ---- CTA néon ---- */
+  .cta-neon {
+    background-color: #00F076;
+    color: #0A1730;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .cta-neon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px -8px rgba(0,240,118,0.55);
+  }
+
+  /* ---- Accessibilité : focus visible ---- */
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid #00F076;
+    outline-offset: 3px;
+  }
+
+  /* ---- Respect du mode "reduced motion" ---- */
+  @media (prefers-reduced-motion: reduce) {
+    .circuit-line { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---- Fallback hero si vidéo indisponible ---- */
+  .hero-fallback {
+    background:
+      radial-gradient(circle at 15% 20%, rgba(0,240,118,0.12), transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(0,240,118,0.10), transparent 45%),
+      linear-gradient(180deg, #071F4D 0%, #0B3984 60%, #0B3984 100%);
+  }
+</style>
+</head>
+
+<body class="font-body text-white">
+
+<!-- ============================================================
+     NAVBAR (fixe)
+============================================================ -->
+<header class="fixed top-0 inset-x-0 z-50 bg-midnight-deep/90 backdrop-blur border-b border-white/10">
+  <nav class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+    <!-- الشعار الجديد (صورة بدلاً من النص) -->
+    <a href="index.html" class="flex items-center">
+      <img src="https://raw.githubusercontent.com/bouaatar/mid/refs/heads/main/small.jpg" alt="Logo MID.MA" class="h-10 w-auto rounded">
+    </a>
+
+    <!-- Liens desktop -->
+    <div class="hidden lg:flex items-center gap-8 font-medium text-sm">
+      <a href="index.html" class="hover:text-neon transition-colors">Accueil</a>
+
+      <div class="relative group">
+        <button class="flex items-center gap-1 hover:text-neon transition-colors">
+          Formations
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="mt-0.5 transition-transform group-hover:rotate-180">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+          <div class="bg-midnight-deep border border-white/10 rounded-xl shadow-2xl py-2 font-mono text-xs">
+            <a href="rad.html" class="block px-4 py-2.5 hover:bg-white/5 hover:text-neon">RAD</a>
+            <a href="low-code.html" class="block px-4 py-2.5 hover:bg-white/5 hover:text-neon">Low-Code / No-Code</a>
+            <a href="iot.html" class="block px-4 py-2.5 hover:bg-white/5 hover:text-neon">IoT</a>
+            <a href="robotics.html" class="block px-4 py-2.5 hover:bg-white/5 hover:text-neon">Robotics</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="blog.html" class="hover:text-neon transition-colors">Découvrir</a>
+      <a href="contact.html" class="hover:text-neon transition-colors">Contactez-nous</a>
+    </div>
+
+    <a href="#formulaire" class="hidden lg:inline-flex cta-neon font-semibold text-sm px-5 py-2.5 rounded-full">
+      Réserver ma place
+    </a>
+
+    <!-- Bouton mobile -->
+    <button id="menu-toggle" class="lg:hidden p-2" aria-label="Ouvrir le menu" aria-expanded="false">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+
+  <!-- Menu mobile -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-midnight-deep border-t border-white/10 px-5 py-4 space-y-3 font-medium text-sm">
+    <a href="index.html" class="block py-1.5">Accueil</a>
+    <p class="pt-2 pb-1 text-xs font-mono text-white/50 uppercase tracking-wider">Formations</p>
+    <a href="rad.html" class="block py-1.5 pl-2">RAD</a>
+    <a href="low-code.html" class="block py-1.5 pl-2">Low-Code / No-Code</a>
+    <a href="iot.html" class="block py-1.5 pl-2">IoT</a>
+    <a href="robotics.html" class="block py-1.5 pl-2">Robotics</a>
+    <a href="blog.html" class="block py-1.5 pt-2">Découvrir</a>
+    <a href="contact.html" class="block py-1.5">Contactez-nous</a>
+    <a href="#formulaire" class="cta-neon block text-center font-semibold px-5 py-2.5 rounded-full mt-3">Réserver ma place</a>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO — Landing Page
+============================================================ -->
+<section class="relative min-h-screen flex items-center pt-16 overflow-hidden">
+  <!-- Vidéo d'arrière-plan مفتوحة المصدر (Mixkit - مبرمج يكتب أكواد) -->
+  <video
+    class="absolute inset-0 w-full h-full object-cover"
+    autoplay muted loop playsinline
+    poster=""
+    onerror="this.style.display='none'; document.getElementById('hero-fallback').style.display='block';">
+    <source src="https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-code-417-large.mp4" type="video/mp4">
+  </video>
+  <div id="hero-fallback" class="hero-fallback absolute inset-0" style="display:none"></div>
+
+  <!-- Overlay bleu foncé 60% -->
+  <div class="absolute inset-0 bg-midnight/60"></div>
+
+  <div class="relative max-w-5xl mx-auto px-5 sm:px-8 text-center">
+    <p class="font-mono text-neon text-xs sm:text-sm tracking-[0.2em] uppercase mb-5">
+      &gt; rabat.maroc/formation-terrain
+    </p>
+    <h1 class="font-display font-700 text-4xl sm:text-6xl lg:text-7xl leading-[1.05] mb-6">
+      Modern Innovation<br class="hidden sm:block"> Digital
+    </h1>
+    <p class="text-white/85 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+      Chez MID.MA, on n'apprend pas la technologie sur un tableau : on la construit, on la débogue et on la déploie. Quatre filières, une seule conviction — le terrain forme mieux que la théorie.
+    </p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="#formulaire" class="cta-neon font-semibold px-8 py-3.5 rounded-full text-base w-full sm:w-auto">
+        Réserver ma place
+      </a>
+      <a href="#formations" class="border border-white/30 hover:border-neon hover:text-neon transition-colors font-medium px-8 py-3.5 rounded-full text-base w-full sm:w-auto">
+        Explorer les filières
+      </a>
+    </div>
+  </div>
+
+  <!-- Indicateur de défilement -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 font-mono text-white/50 text-xs animate-bounce">
+    scroll ↓
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION FORMATIONS
+============================================================ -->
+<section id="formations" class="relative py-24 sm:py-32 bg-midnight-deep">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl mb-16">
+      <p class="font-mono text-neon text-xs tracking-[0.2em] uppercase mb-4">Nos filières</p>
+      <h2 class="font-display font-700 text-3xl sm:text-4xl lg:text-5xl leading-tight mb-5">
+        Quatre systèmes. Une seule méthode : apprendre en construisant.
+      </h2>
+      <p class="text-white/70 text-lg leading-relaxed">
+        Chaque filière est pensée comme un module autonome — mais tous partagent la même approche : projets réels, encadrement de terrain, montée en compétence mesurable.
+      </p>
+    </div>
+
+    <!-- Grille avec trace de circuit -->
+    <div class="relative">
+      <!-- Trace de circuit reliant les cartes (visible sur desktop) -->
+      <svg class="hidden lg:block absolute top-10 left-0 w-full h-px" viewBox="0 0 1200 2" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="0" y1="1" x2="1200" y2="1" stroke="#00F076" stroke-width="2" opacity="0.5" class="circuit-line"/>
+      </svg>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5">
+
+        <!-- Carte RAD -->
+        <div class="formation-card relative bg-midnight-card/60 border border-white/10 rounded-2xl p-6 flex flex-col">
+          <div class="card-node hidden lg:block absolute -top-[42px] left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-white/30 transition-colors"></div>
+          <p class="font-mono text-xs text-neon/80 mb-3">01_rad</p>
+          <h3 class="font-display font-600 text-xl mb-3">RAD</h3>
+          <p class="text-white/70 text-sm leading-relaxed mb-5 flex-1">
+            Ingénierie des systèmes rapides : conception accélérée d'applications métier, optimisation des bases de données et génération de rapports professionnels prêts pour la production.
+          </p>
+          <p class="font-mono text-[11px] text-white/50 mb-5">Bases de données · Reporting · Cycles courts</p>
+          <a href="rad.html" class="inline-flex items-center gap-2 text-sm font-semibold text-neon hover:gap-3 transition-all">
+            Découvrir la filière →
+          </a>
+        </div>
+
+        <!-- Carte Low-Code/No-Code -->
+        <div class="formation-card relative bg-midnight-card/60 border border-white/10 rounded-2xl p-6 flex flex-col">
+          <div class="card-node hidden lg:block absolute -top-[42px] left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-white/30 transition-colors"></div>
+          <p class="font-mono text-xs text-neon/80 mb-3">02_low-code</p>
+          <h3 class="font-display font-600 text-xl mb-3">Low-Code / No-Code</h3>
+          <p class="text-white/70 text-sm leading-relaxed mb-5 flex-1">
+            Constructeurs visuels, développement de MVPs en quelques jours, automatisation des flux métier et intégration cloud — sans sacrifier la rigueur d'architecture.
+          </p>
+          <p class="font-mono text-[11px] text-white/50 mb-5">MVP · Automatisation · Cloud</p>
+          <a href="low-code.html" class="inline-flex items-center gap-2 text-sm font-semibold text-neon hover:gap-3 transition-all">
+            Découvrir la filière →
+          </a>
+        </div>
+
+        <!-- Carte IoT -->
+        <div class="formation-card relative bg-midnight-card/60 border border-white/10 rounded-2xl p-6 flex flex-col">
+          <div class="card-node hidden lg:block absolute -top-[42px] left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-white/30 transition-colors"></div>
+          <p class="font-mono text-xs text-neon/80 mb-3">03_iot</p>
+          <h3 class="font-display font-600 text-xl mb-3">IoT</h3>
+          <p class="text-white/70 text-sm leading-relaxed mb-5 flex-1">
+            Programmation de microcontrôleurs (ESP32, Raspberry Pi), gestion de capteurs et remontée de données vers le cloud : du câblage à la dashboard, en passant par le firmware.
+          </p>
+          <p class="font-mono text-[11px] text-white/50 mb-5">ESP32 · Raspberry Pi · Capteurs</p>
+          <a href="iot.html" class="inline-flex items-center gap-2 text-sm font-semibold text-neon hover:gap-3 transition-all">
+            Découvrir la filière →
+          </a>
+        </div>
+
+        <!-- Carte Robotics -->
+        <div class="formation-card relative bg-midnight-card/60 border border-white/10 rounded-2xl p-6 flex flex-col">
+          <div class="card-node hidden lg:block absolute -top-[42px] left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-white/30 transition-colors"></div>
+          <p class="font-mono text-xs text-neon/80 mb-3">04_robotics</p>
+          <h3 class="font-display font-600 text-xl mb-3">Robotics</h3>
+          <p class="text-white/70 text-sm leading-relaxed mb-5 flex-1">
+            Électronique pratique, automatisation et programmation de systèmes physiques avec Arduino et Micro:bit — de la maquette au prototype fonctionnel.
+          </p>
+          <p class="font-mono text-[11px] text-white/50 mb-5">Arduino · Micro:bit · Automatisation</p>
+          <a href="robotics.html" class="inline-flex items-center gap-2 text-sm font-semibold text-neon hover:gap-3 transition-all">
+            Découvrir la filière →
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION FORMULAIRE (capture de leads)
+============================================================ -->
+<section id="formulaire" class="relative py-24 sm:py-32 bg-midnight">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <p class="font-mono text-neon text-xs tracking-[0.2em] uppercase mb-4">Réservation</p>
+      <h2 class="font-display font-700 text-3xl sm:text-4xl mb-4">Réservez votre place, on s'occupe du reste</h2>
+      <p class="text-white/70 text-lg">Un conseiller pédagogique vous recontacte sous 24h ouvrées.</p>
+    </div>
+
+    <div class="bg-midnight-deep/60 border border-white/10 rounded-3xl p-6 sm:p-10">
+      <form class="grid sm:grid-cols-2 gap-5" onsubmit="event.preventDefault(); alert('Formulaire à connecter à votre backend (PHP/PDO, API, etc.).');">
+        <div class="sm:col-span-1">
+          <label for="nom" class="block text-sm font-medium mb-2">Nom complet</label>
+          <input type="text" id="nom" name="nom" required
+            class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm placeholder-white/40 focus:border-neon"
+            placeholder="Votre nom et prénom">
+        </div>
+        <div class="sm:col-span-1">
+          <label for="email" class="block text-sm font-medium mb-2">Adresse e-mail</label>
+          <input type="email" id="email" name="email" required
+            class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm placeholder-white/40 focus:border-neon"
+            placeholder="vous@exemple.com">
+        </div>
+        <div class="sm:col-span-1">
+          <label for="telephone" class="block text-sm font-medium mb-2">Téléphone</label>
+          <input type="tel" id="telephone" name="telephone"
+            class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm placeholder-white/40 focus:border-neon"
+            placeholder="+212 6 XX XX XX XX">
+        </div>
+        <div class="sm:col-span-1">
+          <label for="filiere" class="block text-sm font-medium mb-2">Filière souhaitée</label>
+          <select id="filiere" name="filiere"
+            class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm focus:border-neon">
+            <option class="text-ink">RAD</option>
+            <option class="text-ink">Low-Code / No-Code</option>
+            <option class="text-ink">IoT</option>
+            <option class="text-ink">Robotics</option>
+          </select>
+        </div>
+        <div class="sm:col-span-2">
+          <label for="message" class="block text-sm font-medium mb-2">Message (facultatif)</label>
+          <textarea id="message" name="message" rows="3"
+            class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm placeholder-white/40 focus:border-neon"
+            placeholder="Une question, une disponibilité particulière..."></textarea>
+        </div>
+        <div class="sm:col-span-2">
+          <button type="submit" class="cta-neon w-full font-semibold px-8 py-3.5 rounded-full text-base">
+            Envoyer ma demande
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="bg-midnight-deep border-t border-white/10 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+    <div>
+      <!-- الشعار الجديد في الفوتر (صورة) -->
+      <a href="index.html" class="block mb-4">
+        <img src="https://raw.githubusercontent.com/bouaatar/mid/refs/heads/main/small.jpg" alt="Logo MID.MA" class="h-10 w-auto rounded">
+      </a>
+      <p class="text-white/60 text-sm leading-relaxed">Modern Innovation Digital — l'apprentissage par la pratique, à Rabat.</p>
+    </div>
+    <div>
+      <p class="font-mono text-xs uppercase tracking-wider text-white/50 mb-4">Filières</p>
+      <ul class="space-y-2.5 text-sm text-white/70">
+        <li><a href="rad.html" class="hover:text-neon">RAD</a></li>
+        <li><a href="low-code.html" class="hover:text-neon">Low-Code / No-Code</a></li>
+        <li><a href="iot.html" class="hover:text-neon">IoT</a></li>
+        <li><a href="robotics.html" class="hover:text-neon">Robotics</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-mono text-xs uppercase tracking-wider text-white/50 mb-4">Liens rapides</p>
+      <ul class="space-y-2.5 text-sm text-white/70">
+        <li><a href="blog.html" class="hover:text-neon">Découvrir</a></li>
+        <li><a href="contact.html" class="hover:text-neon">Contactez-nous</a></li>
+        <li><a href="#formulaire" class="hover:text-neon">Réserver ma place</a></li>
+        <li><a href="mentions-legales.html" class="hover:text-neon">Mentions légales</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-mono text-xs uppercase tracking-wider text-white/50 mb-4">Coordonnées</p>
+      <ul class="space-y-2.5 text-sm text-white/70">
+        <li>Rabat, Maroc</li>
+        <li><a href="mailto:contact@mid.ma" class="hover:text-neon">contact@mid.ma</a></li>
+        <li><a href="tel:+212500000000" class="hover:text-neon">+212 5 00 00 00 00</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 pt-8 border-t border-white/10 text-center text-white/40 text-xs">
+    © 2026 MID.MA — Modern Innovation Digital. Tous droits réservés.
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle.addEventListener('click', () => {
+    const isHidden = menu.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', String(!isHidden));
+  });
+</script>
+
+</body>
+</html>
