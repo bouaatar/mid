@@ -163,6 +163,74 @@
       radial-gradient(circle at 85% 75%, rgba(0,240,118,0.10), transparent 45%),
       linear-gradient(180deg, #071F4D 0%, #0B3984 60%, #0B3984 100%);
   }
+
+  /* ============================================================
+       MODAL — Popup de réservation (charge reservation.php en iframe)
+  ============================================================ */
+  #reservation-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  #reservation-modal.open {
+    display: flex;
+  }
+  #reservation-modal .modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(7, 31, 77, 0.85);
+    backdrop-filter: blur(4px);
+  }
+  #reservation-modal .modal-box {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    max-height: 90vh;
+    background: #0B3984;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6);
+    animation: modal-in 0.25s ease;
+  }
+  @keyframes modal-in {
+    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  #reservation-modal iframe {
+    width: 100%;
+    height: 85vh;
+    max-height: 720px;
+    border: 0;
+    display: block;
+    background: #0B3984;
+  }
+  #reservation-modal .modal-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 2;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  #reservation-modal .modal-close:hover {
+    background: #00F076;
+    color: #0A1730;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #reservation-modal .modal-box { animation: none; }
+  }
 </style>
 </head>
 
@@ -173,7 +241,7 @@
 ============================================================ -->
 <header class="fixed top-0 inset-x-0 z-50 bg-midnight-deep/90 backdrop-blur border-b border-white/10">
   <nav class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
-    <!-- الشعار الجديد (صورة بدلاً من النص) -->
+    <!-- الشعار (صورة) -->
     <a href="index.html" class="flex items-center">
       <img src="https://raw.githubusercontent.com/bouaatar/mid/refs/heads/main/small.jpg" alt="Logo MID.MA" class="h-10 w-auto rounded">
     </a>
@@ -203,9 +271,9 @@
       <a href="contact.html" class="hover:text-neon transition-colors">Contactez-nous</a>
     </div>
 
-    <a href="#formulaire" class="hidden lg:inline-flex cta-neon font-semibold text-sm px-5 py-2.5 rounded-full">
+    <button type="button" data-open-reservation class="hidden lg:inline-flex cta-neon font-semibold text-sm px-5 py-2.5 rounded-full">
       Réserver ma place
-    </a>
+    </button>
 
     <!-- Bouton mobile -->
     <button id="menu-toggle" class="lg:hidden p-2" aria-label="Ouvrir le menu" aria-expanded="false">
@@ -223,7 +291,7 @@
     <a href="robotics.html" class="block py-1.5 pl-2">Robotics</a>
     <a href="blog.html" class="block py-1.5 pt-2">Découvrir</a>
     <a href="contact.html" class="block py-1.5">Contactez-nous</a>
-    <a href="#formulaire" class="cta-neon block text-center font-semibold px-5 py-2.5 rounded-full mt-3">Réserver ma place</a>
+    <button type="button" data-open-reservation class="cta-neon block w-full text-center font-semibold px-5 py-2.5 rounded-full mt-3">Réserver ma place</button>
   </div>
 </header>
 
@@ -255,9 +323,9 @@
       Chez MID.MA, on n'apprend pas la technologie sur un tableau : on la construit, on la débogue et on la déploie. Quatre filières, une seule conviction — le terrain forme mieux que la théorie.
     </p>
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="#formulaire" class="cta-neon font-semibold px-8 py-3.5 rounded-full text-base w-full sm:w-auto">
+      <button type="button" data-open-reservation class="cta-neon font-semibold px-8 py-3.5 rounded-full text-base w-full sm:w-auto">
         Réserver ma place
-      </a>
+      </button>
       <a href="#formations" class="border border-white/30 hover:border-neon hover:text-neon transition-colors font-medium px-8 py-3.5 rounded-full text-base w-full sm:w-auto">
         Explorer les filières
       </a>
@@ -356,69 +424,12 @@
 </section>
 
 <!-- ============================================================
-     SECTION FORMULAIRE (capture de leads)
-============================================================ -->
-<section id="formulaire" class="relative py-24 sm:py-32 bg-midnight">
-  <div class="max-w-3xl mx-auto px-5 sm:px-8">
-    <div class="text-center mb-12">
-      <p class="font-mono text-neon text-xs tracking-[0.2em] uppercase mb-4">Réservation</p>
-      <h2 class="font-display font-700 text-3xl sm:text-4xl mb-4">Réservez votre place, on s'occupe du reste</h2>
-      <p class="text-white/70 text-lg">Un conseiller pédagogique vous recontacte sous 24h ouvrées.</p>
-    </div>
-
-    <div class="bg-midnight-deep/60 border border-white/10 rounded-3xl p-6 sm:p-10">
-      <form class="grid sm:grid-cols-2 gap-5" onsubmit="event.preventDefault(); alert('Formulaire à connecter à votre backend (PHP/PDO, API, etc.).');">
-        <div class="sm:col-span-1">
-          <label for="nom" class="block text-sm font-medium mb-2">Nom complet</label>
-          <input type="text" id="nom" name="nom" required
-            class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm placeholder-white/40 focus:border-neon"
-            placeholder="Votre nom et prénom">
-        </div>
-        <div class="sm:col-span-1">
-          <label for="email" class="block text-sm font-medium mb-2">Adresse e-mail</label>
-          <input type="email" id="email" name="email" required
-            class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm placeholder-white/40 focus:border-neon"
-            placeholder="vous@exemple.com">
-        </div>
-        <div class="sm:col-span-1">
-          <label for="telephone" class="block text-sm font-medium mb-2">Téléphone</label>
-          <input type="tel" id="telephone" name="telephone"
-            class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm placeholder-white/40 focus:border-neon"
-            placeholder="+212 6 XX XX XX XX">
-        </div>
-        <div class="sm:col-span-1">
-          <label for="filiere" class="block text-sm font-medium mb-2">Filière souhaitée</label>
-          <select id="filiere" name="filiere"
-            class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm focus:border-neon">
-            <option class="text-ink">RAD</option>
-            <option class="text-ink">Low-Code / No-Code</option>
-            <option class="text-ink">IoT</option>
-            <option class="text-ink">Robotics</option>
-          </select>
-        </div>
-        <div class="sm:col-span-2">
-          <label for="message" class="block text-sm font-medium mb-2">Message (facultatif)</label>
-          <textarea id="message" name="message" rows="3"
-            class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm placeholder-white/40 focus:border-neon"
-            placeholder="Une question, une disponibilité particulière..."></textarea>
-        </div>
-        <div class="sm:col-span-2">
-          <button type="submit" class="cta-neon w-full font-semibold px-8 py-3.5 rounded-full text-base">
-            Envoyer ma demande
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
      FOOTER
 ============================================================ -->
 <footer class="bg-midnight-deep border-t border-white/10 pt-16 pb-8">
   <div class="max-w-7xl mx-auto px-5 sm:px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
     <div>
-      <!-- الشعار الجديد في الفوتر (صورة) -->
+      <!-- الشعار في الفوتر (صورة) -->
       <a href="index.html" class="block mb-4">
         <img src="https://raw.githubusercontent.com/bouaatar/mid/refs/heads/main/small.jpg" alt="Logo MID.MA" class="h-10 w-auto rounded">
       </a>
@@ -438,7 +449,7 @@
       <ul class="space-y-2.5 text-sm text-white/70">
         <li><a href="blog.html" class="hover:text-neon">Découvrir</a></li>
         <li><a href="contact.html" class="hover:text-neon">Contactez-nous</a></li>
-        <li><a href="#formulaire" class="hover:text-neon">Réserver ma place</a></li>
+        <li><button type="button" data-open-reservation class="hover:text-neon">Réserver ma place</button></li>
         <li><a href="mentions-legales.html" class="hover:text-neon">Mentions légales</a></li>
       </ul>
     </div>
@@ -456,6 +467,20 @@
   </div>
 </footer>
 
+<!-- ============================================================
+     MODAL — Popup de réservation (reservation.php via iframe)
+============================================================ -->
+<div id="reservation-modal" role="dialog" aria-modal="true" aria-labelledby="reservation-modal-title">
+  <div class="modal-overlay" data-close-reservation></div>
+  <div class="modal-box">
+    <button type="button" class="modal-close" data-close-reservation aria-label="Fermer la fenêtre de réservation">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <h2 id="reservation-modal-title" class="sr-only">Formulaire de réservation</h2>
+    <iframe id="reservation-iframe" src="about:blank" title="Formulaire de réservation MID.MA" loading="lazy"></iframe>
+  </div>
+</div>
+
 <script>
   const toggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('mobile-menu');
@@ -463,6 +488,45 @@
     const isHidden = menu.classList.toggle('hidden');
     toggle.setAttribute('aria-expanded', String(!isHidden));
   });
+
+  // ---- Gestion du modal de réservation ----
+  const modal = document.getElementById('reservation-modal');
+  const iframe = document.getElementById('reservation-iframe');
+  const RESERVATION_URL = 'reservation.php';
+  let lastFocused = null;
+
+  function openReservationModal() {
+    lastFocused = document.activeElement;
+    // Recharge le formulaire à chaque ouverture (évite de garder un ancien état/soumission)
+    iframe.src = RESERVATION_URL;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // Ferme le menu mobile si ouvert
+    menu.classList.add('hidden');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  function closeReservationModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    iframe.src = 'about:blank';
+    if (lastFocused) lastFocused.focus();
+  }
+
+  document.querySelectorAll('[data-open-reservation]').forEach(btn => {
+    btn.addEventListener('click', openReservationModal);
+  });
+  document.querySelectorAll('[data-close-reservation]').forEach(el => {
+    el.addEventListener('click', closeReservationModal);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeReservationModal();
+  });
+
+  // Si l'utilisateur arrive avec #formulaire dans l'URL, ouvrir directement le modal
+  if (window.location.hash === '#formulaire') {
+    openReservationModal();
+  }
 </script>
 
 </body>
